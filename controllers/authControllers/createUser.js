@@ -1,4 +1,4 @@
-import Users from "../models/Users.js";
+import Users from "../../models/Users.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
@@ -39,7 +39,7 @@ export const createUserFcn = async (req, res) => {
       { email: newUser.email, userId: newUser._id },
       process.env.JWT_SECRET
     );
-    const verificationLink = `http://localhost:${process.env.PORT}/verify-email/${token}`;
+    const verificationLink = `http://localhost:${process.env.PORT}/authRoutes/verify-email/${token}`;
     const mailOptions = {
       from: process.env.MAILRU_EMAIL,
       to: email,
@@ -63,6 +63,6 @@ export const createUserFcn = async (req, res) => {
       }
     });
   } catch (error) {
-    res.status(500).send({ message: "Internal Server error"});
+    res.status(500).send({ message: "Internal Server error" });
   }
 };

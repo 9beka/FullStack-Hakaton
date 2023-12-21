@@ -1,4 +1,4 @@
-import Users from "../models/Users.js";
+import Users from "../../models/Users.js";
 import jwt from "jsonwebtoken";
 export const verifyEmailController = async (req, res) => {
   try {

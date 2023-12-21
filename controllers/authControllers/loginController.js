@@ -1,6 +1,6 @@
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import Users from "../models/Users.js";
+import Users from "../../models/Users.js";
 export const loginController = async (req, res) => {
   console.log(Users.hash_pass);
   try {
@@ -21,7 +21,7 @@ export const loginController = async (req, res) => {
       process.env.JWT_SECRET
     );
     console.log(token);
-    return res.json({token});
+    return res.json({ token });
   } catch (error) {
     res.status(500).send({ message: "Internal Server Error from LOGIN" });
   }

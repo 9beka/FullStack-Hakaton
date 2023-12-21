@@ -1,10 +1,12 @@
-import Users from "../models/Users.js";
+import Users from "../../models/Users.js";
 export const getProfileInfoController = async (req, res) => {
   try {
     const user = await Users.findById(req.user.userId).select("-hash_pass");
     if (!user) return res.status(404).send({ message: "User not found" });
     res.status(200).send({ user });
   } catch (error) {
-    res.status(500).send({ message: "Internal Server Error from getProfileInfoController" });
+    res
+      .status(500)
+      .send({ message: "Internal Server Error from getProfileInfoController" });
   }
 };
